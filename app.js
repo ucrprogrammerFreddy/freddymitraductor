@@ -34,7 +34,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Servir archivos estáticos
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
+
 
 
 
@@ -108,6 +109,15 @@ const translatedText = completion.choices[0].message.content;
 // app.listen(PORT, () => {
 //   console.log("Servidor corriendo en http://localhost:" + PORT);
 // });
+
+// Ruta explícita para servir index.html
+
+
+app.use(express.static(__dirname));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Servidor corriendo en http://0.0.0.0:${PORT}`);
 });

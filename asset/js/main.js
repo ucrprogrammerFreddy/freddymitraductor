@@ -25,7 +25,7 @@ let inputText = document.querySelector("#inputText");
 
   // Hacer la petición al backend
   try {
-    const response = await fetch("/api/traducir", {
+    const response = await fetch("https://freddymitraductor.onrender.com/api/traducir", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text, targetLanguage: targetLang })
